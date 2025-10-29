@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workshop Importação na Prática - Aprenda a Importar do Zero</title>
+    <title>Guarda-Roupa Dobrável | Glamorix - Organização com Estilo</title>
+    <meta name="description" content="Guarda-roupa dobrável premium da Glamorix. Organize seu espaço com estilo! Frete grátis para Ibicuitinga. Aproveite nossa promoção por tempo limitado!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --rosa-principal: #e91e63;
+            --rosa-claro: #f8bbd9;
+            --rosa-escuro: #c2185b;
+            --preto: #212121;
+            --cinza: #757575;
+            --branco: #ffffff;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +25,7 @@
         
         body {
             background-color: #f5f5f5;
-            color: #333;
+            color: var(--preto);
             line-height: 1.6;
         }
         
@@ -25,250 +36,492 @@
         }
         
         header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background: linear-gradient(to right, var(--preto), var(--rosa-escuro));
+            color: var(--branco);
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
         }
         
-        .header-content {
+        .countdown {
+            background-color: var(--rosa-principal);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .countdown-timer {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .timer-unit {
+            background: var(--preto);
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 50px;
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
         
-        .logo span {
-            color: #3498db;
+        .slogan {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
         
         .hero {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 40px 0;
+            background-color: var(--branco);
         }
         
-        .hero h1 {
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .hero-video {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            line-height: 1.2;
+            color: var(--rosa-principal);
         }
         
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+        h2 {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: var(--rosa-principal);
+        }
+        
+        .price {
+            margin: 20px 0;
+        }
+        
+        .old-price {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            color: var(--cinza);
+        }
+        
+        .new-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--rosa-principal);
+        }
+        
+        .highlight {
+            background-color: var(--rosa-claro);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .highlight i {
+            color: var(--rosa-principal);
         }
         
         .cta-button {
             display: inline-block;
-            background-color: #e74c3c;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
-            text-decoration: none;
+            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-escuro));
+            color: var(--branco);
+            padding: 18px 35px;
+            font-size: 1.3rem;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 20px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+            text-align: center;
+            width: 100%;
         }
         
         .cta-button:hover {
-            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.6);
         }
         
-        .content-section {
-            padding: 80px 0;
-            background-color: white;
+        .whatsapp-button {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2rem;
-            color: #2c3e50;
+        .features {
+            padding: 40px 0;
+            background-color: var(--branco);
         }
         
-        .benefits {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
         
-        .benefit-card {
-            background-color: #f9f9f9;
-            padding: 30px;
-            border-radius: 5px;
+        .feature {
             text-align: center;
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s;
         }
         
-        .benefit-card:hover {
-            transform: translateY(-10px);
+        .feature:hover {
+            transform: translateY(-5px);
         }
         
-        .benefit-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #3498db;
-        }
-        
-        .benefit-card h3 {
+        .feature-icon {
+            font-size: 2.5rem;
             margin-bottom: 15px;
-            color: #2c3e50;
+            color: var(--rosa-principal);
+        }
+        
+        .gallery {
+            padding: 40px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
         }
         
         .testimonials {
-            background-color: #f5f5f5;
-            padding: 80px 0;
+            padding: 40px 0;
+            background-color: var(--branco);
         }
         
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 20px;
+            margin-top: 30px;
         }
         
-        .testimonial-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 5px;
+        .testimonial {
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background-color: #f9f9f9;
         }
         
         .testimonial-text {
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .testimonial-author {
             font-weight: bold;
-            color: #3498db;
+            color: var(--rosa-principal);
         }
         
-        .workshop-image {
+        .guarantee {
+            padding: 40px 0;
+            background: linear-gradient(to right, var(--preto), var(--rosa-escuro));
+            color: var(--branco);
             text-align: center;
-            margin: 40px 0;
         }
         
-        .workshop-image img {
-            max-width: 100%;
+        .guarantee h2 {
+            color: var(--branco);
+        }
+        
+        .payment-info {
+            padding: 40px 0;
+            background-color: var(--branco);
+            text-align: center;
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .payment-method {
+            background-color: #f5f5f5;
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            min-width: 150px;
         }
         
-        .final-cta {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            padding: 80px 0;
+        .social-section {
+            padding: 40px 0;
+            background-color: #f9f9f9;
             text-align: center;
         }
         
-        .final-cta h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
         
-        .final-cta p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: var(--branco);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--preto);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        .instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+        
+        .facebook {
+            background: #3b5998;
+            color: white;
         }
         
         footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 40px 0;
+            background-color: var(--preto);
+            color: var(--branco);
+            padding: 30px 0;
             text-align: center;
         }
         
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--rosa-principal);
         }
         
-        .footer-links {
-            margin: 20px 0;
+        .contact-info {
+            margin: 15px 0;
         }
         
-        .footer-links a {
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
             color: white;
-            margin: 0 15px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
             text-decoration: none;
         }
         
-        .copyright {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #bdc3c7;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
+            h1 {
                 font-size: 2rem;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .hero {
+                flex-direction: column;
             }
             
-            .benefits, .testimonial-grid {
-                grid-template-columns: 1fr;
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
+    <div class="countdown">
+        <div>OFERTA POR TEMPO LIMITADO!</div>
+        <div class="countdown-timer">
+            <div class="timer-unit"><span id="days">00</span>d</div>
+            <div class="timer-unit"><span id="hours">00</span>h</div>
+            <div class="timer-unit"><span id="minutes">00</span>m</div>
+            <div class="timer-unit"><span id="seconds">00</span>s</div>
+        </div>
+    </div>
+    
     <header>
         <div class="container">
-            <div class="header-content">
-                <div class="logo">Importação<span>NaPrática</span></div>
-            </div>
+            <div class="logo">Glamorix</div>
+            <div class="slogan">Organização com estilo e praticidade</div>
         </div>
     </header>
     
     <section class="hero">
         <div class="container">
-            <h1>Aprenda a Importar Produtos e Lucrar até 500%</h1>
-            <p>Workshop gratuito revela o método completo para iniciar no mercado de importação, mesmo começando do zero e com pouco capital.</p>
-            <a href="https://workshop.importacaonapratica.com.br/lp7/?utm_source=MetaAds&utm_medium=Instagram_Stories&utm_campaign=%5BLANCAMENTO%5D%5BWIP12%5D%5BCAPTACAO%5D%5BQUENTE%5D%5BCBO%5D%5BPUB-MIX-02%5D&utm_term=%5BQ%5D00-PUBLICO-MIX_02&utm_content=%5BFB%5D-AD232_7_SECONDS_1_FEED&vk_source=paid_metaads&vk_ad_id=120232052387480741&utm_id=120232052387430741&fbclid=PAb21jcANvbyxleHRuA2FlbQEwAGFkaWQBqyZqK3AFpQGnJ3h74AlstVDulKo78z0O-SKrM-tqDb7vz0n6GbfCzmpyfPk0sRpfDzHAJtM_aem_OyKFzo-MoY1_r5xv4Rlm0w" class="cta-button">QUERO ME INSCREVER AGORA</a>
+            <div class="hero-content">
+                <h1>Guarda-Roupa Dobrável Premium</h1>
+                <p>Organize seu espaço com elegância e praticidade! Nosso guarda-roupa dobrável é a solução perfeita para quem busca otimizar ambientes sem abrir mão do estilo.</p>
+                
+                <div class="price">
+                    <div class="old-price">De R$ 299,00</div>
+                    <div class="new-price">Por apenas R$ 179,00</div>
+                </div>
+                
+                <div class="highlight">
+                    <i class="fas fa-shipping-fast"></i>
+                    <span>FRETE GRÁTIS para Ibicuitinga</span>
+                </div>
+                
+                <div class="highlight">
+                    <i class="fas fa-box"></i>
+                    <span>PRODUTOS A PRONTA ENTREGA</span>
+                </div>
+                
+                <div class="highlight">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>VOCÊ SÓ PAGA QUANDO RECEBER</span>
+                </div>
+                
+                <div class="highlight">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>GARANTIA DE 30 DIAS</span>
+                </div>
+                
+                <p>Não perca esta oportunidade única de transformar seu espaço com um produto de alta qualidade por um preço incrível!</p>
+                
+                <a href="https://wa.me/5585997068677?text=Olá! Gostaria de comprar o Guarda-Roupa Dobrável Glamorix" class="cta-button whatsapp-button">
+                    <i class="fab fa-whatsapp"></i> COMPRAR VIA WHATSAPP
+                </a>
+            </div>
+            
+            <div class="hero-video">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/qHmgfgonJaI" title="Guarda-Roupa Dobrável - Glamorix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
     </section>
     
-    <section class="content-section">
+    <section class="features">
         <div class="container">
-            <h2 class="section-title">O Que Você Vai Aprender no Workshop</h2>
-            
-            <div class="workshop-image">
-                <img src="https://share.google/f3H7EkS110jU9yhqe" alt="Workshop Importação na Prática">
+            <h2>Por que escolher nosso Guarda-Roupa Dobrável?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Receba seu produto em poucos dias, com frete grátis para Ibicuitinga.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Alta Qualidade</h3>
+                    <p>Material resistente e durável, com acabamento impecável.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Fácil Montagem</h3>
+                    <p>Montagem rápida e prática, sem necessidade de ferramentas.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Design Moderno</h3>
+                    <p>Estilo contemporâneo que combina com qualquer decoração.</p>
+                </div>
             </div>
-            
-            <div class="benefits">
-                <div class="benefit-card">
-                    <div class="benefit-icon">📦</div>
-                    <h3>Encontrar os Melhores Produtos</h3>
-                    <p>Descubra como identificar produtos com alta demanda e margem de lucro no mercado brasileiro.</p>
+        </div>
+    </section>
+    
+    <section class="gallery">
+        <div class="container">
+            <h2>Conheça nosso produto</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Guarda-Roupa Dobrável - Vista Frontal">
                 </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">💰</div>
-                    <h3>Economizar nos Custos</h3>
-                    <p>Aprenda estratégias para reduzir custos de importação e aumentar sua margem de lucro.</p>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3VhcmRhJTIwcm91cGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Guarda-Roupa Dobrável - Vista Lateral">
                 </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">🚀</div>
-                    <h3>Escalar seu Negócio</h3>
-                    <p>Conheça as técnicas para expandir suas operações e aumentar seu faturamento.</p>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8b3JnYW5pemF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Guarda-Roupa Dobrável - Organização Interna">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Guarda-Roupa Dobrável - Em Uso">
                 </div>
             </div>
         </div>
@@ -276,49 +529,79 @@
     
     <section class="testimonials">
         <div class="container">
-            <h2 class="section-title">O Que Nossos Alunos Dizem</h2>
-            
+            <h2>O que nossos clientes dizem</h2>
             <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Participei do workshop e em 3 meses já estava importando meus primeiros produtos. Hoje tenho uma renda extra que supera meu salário."</p>
-                    <p class="testimonial-author">- Maria Silva, São Paulo</p>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Comprei para meu apartamento pequeno e foi a melhor decisão! Economiza espaço e é muito resistente. Paguei apenas quando recebi em casa!"</div>
+                    <div class="testimonial-author">- Maria S., Ibicuitinga</div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"O método é realmente prático e acessível. Comecei com pouco capital e hoje tenho meu próprio e-commerce de sucesso."</p>
-                    <p class="testimonial-author">- João Santos, Rio de Janeiro</p>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Fácil de montar e muito bonito. Superou minhas expectativas! A entrega foi super rápida e o produto chegou perfeito."</div>
+                    <div class="testimonial-author">- João P., Fortaleza</div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Finalmente encontrei um curso que ensina importação de verdade, sem enrolação. Recomendo para todos!"</p>
-                    <p class="testimonial-author">- Ana Costa, Minas Gerais</p>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Produto de excelente qualidade pelo preço. Chegou antes do prazo e frete grátis! Amei a experiência de compra."</div>
+                    <div class="testimonial-author">- Ana L., São Paulo</div>
                 </div>
             </div>
         </div>
     </section>
     
-    <section class="final-cta">
+    <section class="social-section">
         <div class="container">
-            <h2>Não Perca Esta Oportunidade Única!</h2>
-            <p>As vagas são limitadas e o workshop é 100% gratuito. Garanta seu lugar agora mesmo e dê o primeiro passo para mudar sua vida financeira.</p>
-            <a href="https://workshop.importacaonapratica.com.br/lp7/?utm_source=MetaAds&utm_medium=Instagram_Stories&utm_campaign=%5BLANCAMENTO%5D%5BWIP12%5D%5BCAPTACAO%5D%5BQUENTE%5D%5BCBO%5D%5BPUB-MIX-02%5D&utm_term=%5BQ%5D00-PUBLICO-MIX_02&utm_content=%5BFB%5D-AD232_7_SECONDS_1_FEED&vk_source=paid_metaads&vk_ad_id=120232052387480741&utm_id=120232052387430741&fbclid=PAb21jcANvbyxleHRuA2FlbQEwAGFkaWQBqyZqK3AFpQGnJ3h74AlstVDulKo78z0O-SKrM-tqDb7vz0n6GbfCzmpyfPk0sRpfDzHAJtM_aem_OyKFzo-MoY1_r5xv4Rlm0w" class="cta-button">QUERO MINHA VAGA GRATUITA</a>
+            <h2>Siga a Glamorix nas Redes Sociais</h2>
+            <p>Fique por dentro das novidades, promoções exclusivas e inspirações de organização!</p>
+            <div class="social-links">
+                <a href="https://instagram.com/glamorix_" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>@glamorix_</span>
+                </a>
+                <a href="https://facebook.com/glamorix" class="social-link facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>/glamorix</span>
+                </a>
+            </div>
         </div>
     </section>
     
-    <footer>
+    <section class="guarantee">
         <div class="container">
-            <div class="footer-content">
-                <div class="logo">Importação<span>NaPrática</span></div>
-                
-                <div class="footer-links">
-                    <a href="#">Termos de Uso</a>
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Contato</a>
-                </div>
-                
-                <p class="copyright">© 2023 Importação na Prática. Todos os direitos reservados.</p>
+            <h2>Garantia de Satisfação</h2>
+            <p>Oferecemos garantia de 30 dias para trocas e devoluções. Se não ficar satisfeito, devolvemos seu dinheiro!</p>
+        </div>
+    </section>
+    
+    <section class="payment-info">
+        <div class="container">
+            <h2>Formas de Pagamento</h2>
+            <p>Você só paga quando receber o produto!</p>
+            <div class="payment-methods">
+                <div class="payment-method">Cartão de Crédito</div>
+                <div class="payment-method">PIX</div>
+                <div class="payment-method">Boleto</div>
+                <div class="payment-method">Dinheiro na Entrega</div>
             </div>
         </div>
-    </footer>
-</body>
-    </html>
+    </section>
+    
+    <section class="hero" id="comprar">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Não perca esta oportunidade!</h2>
+                
+                <div class="price">
+                    <div class="old-price">De R$ 299,00</div>
+                    <div class="new-price">Por apenas R$ 179,00</div>
+                </div>
+                
+                <div class="highlight">
+                    <i class="fas fa-shipping-fast"></i>
+                    <span>FRETE GRÁTIS para Ibicuitinga</span>
+                </div>
+                
+                <div class="highlight">
+                    <i class="fas fa-box"></i>
+                    <span>PRODUTOS A PRONTA ENTREGA</span>
+      
