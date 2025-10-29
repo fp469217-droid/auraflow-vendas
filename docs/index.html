@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guarda-Roupa Dobrável - Organize Seu Espaço com Praticidade</title>
+    <title>GitHub Scheduler - Agendamento de Repositórios</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #e74c3c;
-            --accent: #3498db;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --primary-color: #24292e;
+            --secondary-color: #0366d6;
+            --accent-color: #28a745;
+            --light-color: #f6f8fa;
+            --text-color: #24292e;
+            --border-color: #e1e4e8;
         }
         
         * {
@@ -23,9 +22,9 @@
         }
         
         body {
-            color: var(--text);
+            background-color: #fafbfc;
+            color: var(--text-color);
             line-height: 1.6;
-            background-color: #f9f9f9;
         }
         
         .container {
@@ -34,15 +33,11 @@
             padding: 0 20px;
         }
         
-        /* Header */
         header {
-            background-color: var(--primary);
+            background-color: var(--primary-color);
             color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .header-content {
@@ -52,563 +47,511 @@
         }
         
         .logo {
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
             color: white;
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
         }
         
-        .logo span {
-            color: var(--accent);
+        nav a:hover {
+            color: var(--secondary-color);
         }
         
-        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #444d56 100%);
             color: white;
-            padding: 80px 0;
+            padding: 4rem 0;
             text-align: center;
         }
         
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
         
         .hero p {
             font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--secondary);
+            background-color: var(--accent-color);
             color: white;
-            padding: 14px 30px;
-            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            transition: background-color 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: var(--shadow);
         }
         
         .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #22863a;
         }
         
-        /* Video Section */
-        .video-section {
-            padding: 80px 0;
-            background-color: white;
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #0256b3;
+        }
+        
+        .features {
+            padding: 4rem 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.2rem;
-            color: var(--primary);
-        }
-        
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-        }
-        
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background-color: var(--light);
+            margin-bottom: 3rem;
+            font-size: 2rem;
         }
         
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
         
         .feature-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            background: white;
+            border-radius: 6px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .feature-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: var(--accent);
+            background-color: var(--light-color);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
         
         .feature-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
         
-        /* Benefits Section */
-        .benefits {
-            padding: 80px 0;
-            background-color: white;
+        .scheduler {
+            padding: 4rem 0;
+            background-color: var(--light-color);
         }
         
-        .benefits-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: var(--light);
-            border-radius: 10px;
-        }
-        
-        .benefit-icon {
-            font-size: 24px;
-            margin-right: 20px;
-            color: var(--accent);
-            min-width: 40px;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background-color: var(--light);
-        }
-        
-        .testimonial-grid {
+        .scheduler-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
         }
         
-        .testimonial-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
+        .form-group {
+            margin-bottom: 1.5rem;
         }
         
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
         
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--primary);
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
         }
         
-        /* Pricing Section */
-        .pricing {
-            padding: 80px 0;
-            background-color: white;
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.2);
         }
         
-        .pricing-card {
-            max-width: 500px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow);
+        .calendar {
+            background: white;
+            border-radius: 6px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
-        .price {
-            font-size: 3rem;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-        
-        .price span {
-            font-size: 1.5rem;
-            vertical-align: super;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            margin: 30px 0;
-            text-align: left;
-        }
-        
-        .pricing-features li {
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-        }
-        
-        .pricing-features li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-        
-        /* FAQ Section */
-        .faq {
-            padding: 80px 0;
-            background-color: var(--light);
-        }
-        
-        .faq-item {
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .faq-question {
-            background-color: white;
-            padding: 20px;
-            font-weight: bold;
-            cursor: pointer;
+        .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 1rem;
         }
         
-        .faq-answer {
-            background-color: white;
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
         }
         
-        .faq-answer.active {
-            padding: 20px;
-            max-height: 500px;
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
+        .calendar-day {
             text-align: center;
+            padding: 0.5rem;
+            font-weight: 500;
+            color: #586069;
         }
         
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        .calendar-date {
+            text-align: center;
+            padding: 0.8rem 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
         }
         
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.2rem;
+        .calendar-date:hover {
+            background-color: var(--light-color);
         }
         
-        /* Footer */
-        footer {
-            background-color: var(--dark);
+        .calendar-date.selected {
+            background-color: var(--secondary-color);
             color: white;
-            padding: 50px 0 20px;
+        }
+        
+        .calendar-date.disabled {
+            color: #d1d5da;
+            cursor: not-allowed;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        
+        .time-slot {
+            padding: 0.6rem;
+            text-align: center;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .time-slot:hover {
+            border-color: var(--secondary-color);
+        }
+        
+        .time-slot.selected {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 2rem;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
-        .footer-column h3 {
-            margin-bottom: 20px;
-            color: var(--accent);
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
         
-        .footer-column ul {
+        .footer-section ul {
             list-style: none;
         }
         
-        .footer-column ul li {
-            margin-bottom: 10px;
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
         }
         
-        .footer-column a {
-            color: #ddd;
+        .footer-section a {
+            color: #c8d1d9;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
         
-        .footer-column a:hover {
-            color: var(--accent);
+        .footer-section a:hover {
+            color: white;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: #aaa;
+            padding-top: 2rem;
+            border-top: 1px solid #2f363d;
+            color: #8b949e;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+            .scheduler-container {
+                grid-template-columns: 1fr;
             }
             
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .benefit-item {
+            .header-content {
                 flex-direction: column;
-                text-align: center;
+                gap: 1rem;
             }
             
-            .benefit-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">Organize<span>Fácil</span></a>
-                <a href="#comprar" class="btn">Comprar Agora</a>
+                <div class="logo">
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    <span>GitHub Scheduler</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Recursos</a></li>
+                        <li><a href="#scheduler">Agendar</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Guarda-Roupa Dobrável: A Solução Definitiva Para Organizar Sua Casa</h1>
-            <p>Ganhe espaço, organize suas roupas e transforme qualquer ambiente com nosso guarda-roupa dobrável de alta qualidade. Prático, resistente e incrivelmente versátil.</p>
-            <a href="#comprar" class="btn">Quero Organizar Minha Casa</a>
+            <h1>Agendamento Inteligente para Repositórios GitHub</h1>
+            <p>Agende commits, pull requests e merges automaticamente. Mantenha seu fluxo de trabalho organizado e produtivo.</p>
+            <a href="#scheduler" class="btn">Começar Agora</a>
         </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="video-section">
+    <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">Veja Como É Fácil Montar e Usar</h2>
-            <div class="video-container">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/o0KvF8ThN-k" title="Guarda-Roupa Dobrável - Demonstração do Produto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Por Que Escolher Nosso Guarda-Roupa Dobrável?</h2>
+            <h2 class="section-title">Recursos Principais</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Montagem Rápida</h3>
-                    <p>Não precisa de ferramentas nem conhecimentos especiais. Monte em menos de 5 minutos!</p>
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Agendamento Seguro</h3>
+                    <p>Seus repositórios e dados estão protegidos com autenticação GitHub OAuth e criptografia de ponta a ponta.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📦</div>
-                    <h3>Economiza Espaço</h3>
-                    <p>Perfeito para apartamentos pequenos, quartos de hóspedes ou qualquer ambiente com espaço limitado.</p>
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Agendamento Flexível</h3>
+                    <p>Programe commits, pull requests e merges para qualquer data e hora futura que melhor se adequar ao seu fluxo de trabalho.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💪</div>
-                    <h3>Super Resistente</h3>
-                    <p>Estrutura reforçada que suporta até 50kg. Feito para durar e organizar todas as suas roupas.</p>
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Colaboração em Equipe</h3>
+                    <p>Coordene agendamentos com sua equipe, evitando conflitos e mantendo todos na mesma página.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits">
+    <section id="scheduler" class="scheduler">
         <div class="container">
-            <h2 class="section-title">Vantagens Exclusivas</h2>
-            <div class="benefits-list">
-                <div class="benefit-item">
-                    <div class="benefit-icon">✅</div>
-                    <div>
-                        <h3>Organização Inteligente</h3>
-                        <p>Compartimentos específicos para cabides, gavetas e prateleiras, permitindo organizar todos os tipos de roupas e acessórios.</p>
+            <h2 class="section-title">Agendar Ação no GitHub</h2>
+            <div class="scheduler-container">
+                <div class="scheduler-form">
+                    <form id="scheduling-form">
+                        <div class="form-group">
+                            <label for="repository">Repositório</label>
+                            <select id="repository" class="form-control" required>
+                                <option value="">Selecione um repositório</option>
+                                <option value="repo1">usuario/repositorio-1</option>
+                                <option value="repo2">usuario/repositorio-2</option>
+                                <option value="repo3">empresa/projeto-1</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="action-type">Tipo de Ação</label>
+                            <select id="action-type" class="form-control" required>
+                                <option value="">Selecione uma ação</option>
+                                <option value="commit">Commit</option>
+                                <option value="pull-request">Pull Request</option>
+                                <option value="merge">Merge</option>
+                                <option value="issue">Criar Issue</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Descrição</label>
+                            <textarea id="description" class="form-control" rows="3" placeholder="Descreva a ação a ser agendada..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="branch">Branch (opcional)</label>
+                            <input type="text" id="branch" class="form-control" placeholder="main, develop, etc.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Data e Hora</label>
+                            <div class="selected-date-time">
+                                <p id="selected-date">Data: Não selecionada</p>
+                                <p id="selected-time">Hora: Não selecionada</p>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Agendar Ação</button>
+                    </form>
+                </div>
+                
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button id="prev-month" class="btn" style="padding: 0.3rem 0.8rem;">&lt;</button>
+                        <h3 id="current-month">Junho 2023</h3>
+                        <button id="next-month" class="btn" style="padding: 0.3rem 0.8rem;">&gt;</button>
+                    </div>
+                    
+                    <div class="calendar-grid">
+                        <div class="calendar-day">Dom</div>
+                        <div class="calendar-day">Seg</div>
+                        <div class="calendar-day">Ter</div>
+                        <div class="calendar-day">Qua</div>
+                        <div class="calendar-day">Qui</div>
+                        <div class="calendar-day">Sex</div>
+                        <div class="calendar-day">Sáb</div>
+                        
+                        <!-- Dates will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="time-slots">
+                        <div class="time-slot" data-time="09:00">09:00</div>
+                        <div class="time-slot" data-time="10:00">10:00</div>
+                        <div class="time-slot" data-time="11:00">11:00</div>
+                        <div class="time-slot" data-time="12:00">12:00</div>
+                        <div class="time-slot" data-time="13:00">13:00</div>
+                        <div class="time-slot" data-time="14:00">14:00</div>
+                        <div class="time-slot" data-time="15:00">15:00</div>
+                        <div class="time-slot" data-time="16:00">16:00</div>
+                        <div class="time-slot" data-time="17:00">17:00</div>
                     </div>
                 </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">✅</div>
-                    <div>
-                        <h3>Fácil de Transportar</h3>
-                        <p>Dobrável e leve, você pode levá-lo para qualquer lugar: viagens, mudanças ou simplesmente reorganizar os ambientes.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">✅</div>
-                    <div>
-                        <h3>Material de Qualidade</h3>
-                        <p>Feito com tecido resistente e estrutura metálica robusta, garantindo durabilidade e estabilidade.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">✅</div>
-                    <div>
-                        <h3>Versátil e Adaptável</h3>
-                        <p>Use como guarda-roupa principal, complementar, em closets, quartos, áreas de serviço ou até mesmo em home offices.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Comprei para meu apartamento pequeno e mudou completamente minha organização. Fácil de montar e muito resistente!"</p>
-                    <p class="testimonial-author">- Maria S., São Paulo</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Perfeito para organizar as roupas de inverno que ficam guardadas boa parte do ano. Quando não estou usando, dobro e guardo no armário."</p>
-                    <p class="testimonial-author">- João P., Rio de Janeiro</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Uso no meu home office para organizar materiais e também algumas roupas. Muito versátil e prático!"</p>
-                    <p class="testimonial-author">- Ana L., Belo Horizonte</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="comprar">
-        <div class="container">
-            <h2 class="section-title">Adquira o Seu Agora</h2>
-            <div class="pricing-card">
-                <h3>Guarda-Roupa Dobrável Premium</h3>
-                <div class="price"><span>R$</span>147,90</div>
-                <p>ou 12x de R$ 14,90 sem juros</p>
-                <ul class="pricing-features">
-                    <li>Montagem rápida e fácil (sem ferramentas)</li>
-                    <li>Suporta até 50kg de peso</li>
-                    <li>Compartimento para cabides e prateleiras</li>
-                    <li>Material resistente e durável</li>
-                    <li>Dobrável para fácil armazenamento</li>
-                    <li>Garantia de 1 ano</li>
-                </ul>
-                <a href="#" class="btn">Comprar Agora</a>
-                <p style="margin-top: 15px; font-size: 0.9rem;">Entrega para todo o Brasil</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="container">
-            <h2 class="section-title">Perguntas Frequentes</h2>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Quanto tempo leva para montar o guarda-roupa?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>A montagem é extremamente simples e rápida. A maioria das pessoas consegue montar em menos de 5 minutos, sem necessidade de ferramentas ou conhecimentos especiais.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Quanto peso o guarda-roupa suporta?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Nosso guarda-roupa dobrável tem estrutura reforçada e suporta até 50kg distribuídos, sendo mais do que suficiente para organizar todas as suas roupas e acessórios.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Quais as dimensões do produto?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Quando montado, o guarda-roupa mede aproximadamente 120cm de altura, 80cm de largura e 45cm de profundidade. Dobrado, ocupa muito pouco espaço para armazenamento.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Qual o prazo de entrega?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>O prazo de entrega varia de acordo com sua localização. Em média, as entregas são realizadas em 5 a 10 dias úteis para a maioria das regiões do Brasil.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Não Deixe a Desorganização Dominar Sua Casa</h2>
-            <p>Transforme seus espaços com o guarda-roupa dobrável que vai revolucionar sua organização. Garanta o seu agora com condições especiais!</p>
-            <a href="#comprar" class="btn">Quero Meu Guarda-Roupa</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>OrganizeFácil</h3>
-                    <p>Soluções práticas para organizar sua casa e sua vida. Produtos de qualidade que fazem a diferença no seu dia a dia.</p>
+                <div class="footer-section">
+                    <h3>GitHub Scheduler</h3>
+                    <p>Ferramenta de agendamento para otimizar seu fluxo de trabalho no GitHub.</p>
                 </div>
-                <div class="footer-column">
+                
+                <div class="footer-section">
                     <h3>Links Rápidos</h3>
                     <ul>
-                        <li><a href="#">Início</a></li>
-                        <li><a href="#comprar">Comprar</a></li>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="#features">Recursos</a></li>
+                        <li><a href="#scheduler">Agendar</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Suporte</h3>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
                     <ul>
-                        <li><a href="#">Perguntas Frequentes</a></li>
-                        <li><a href="#">Política de Entrega</a></li>
-                      
+                        <li>Email: contato@githubscheduler.com</li>
+                        <li>GitHub: @githubscheduler</li>
+                        <li>Twitter: @ghscheduler</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 GitHub Scheduler. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calendar functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentMonthElement = document.getElementById('current-month');
+            const calendarGrid = document.querySelector('.calendar-grid');
+            const prevMonthButton = document.getElementById('prev-month');
+            const nextMonthButton = document.getElementById('next-month');
+            const timeSlots = document.querySelectorAll('.time-slot');
+            const selectedDateElement = document.getElementById('selected-date');
+            const selectedTimeElement = document.getElementById('selected-time');
+            const schedulingForm = document.getElementById('scheduling-form');
+            
+            let currentDate = new Date();
+            let selectedDate = null;
+            let selectedTime = null;
+            
+            // Render calendar for current month
+            function renderCalendar(date) {
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                
+                // Update month and year display
+                const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                                    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                currentMonthElement.textContent = `${monthNames[month]} ${year}`;
+                
+                // Clear existing dates (except day headers)
+                while (calendarGrid.children.length > 7) {
+                    calendarGrid.removeChild(calendarGrid.lastChild);
+                }
+                
+                // Get first day of month and number o
