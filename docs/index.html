@@ -4,651 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbearia Clássica - Agendamento</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #d4af37;
-            --secondary: #1a1a1a;
-            --accent: #8b4513;
-            --light: #f5f5f5;
-            --gray: #777;
-        }
+        :root { --primary: #d4af37; --secondary: #1a1a1a; --light: #f5f5f5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #f9f9f9; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        header { background: var(--secondary); color: white; padding: 15px 0; text-align: center; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .logo span { color: var(--primary); }
         
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
+        .hero { background: #2a2a2a; color: white; padding: 40px 0; text-align: center; }
+        .btn { background: var(--primary); color: var(--secondary); padding: 12px 25px; 
+               border: none; border-radius: 4px; font-weight: bold; cursor: pointer; margin-top: 15px; }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .scheduler { padding: 40px 0; }
+        .scheduler-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         
-        /* Header */
-        header {
-            background: linear-gradient(to right, var(--secondary), #2a2a2a);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+        .form-container, .calendar-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .calendar-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .nav-btn { background: var(--primary); border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
         
-        .logo i {
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-bottom: 15px; }
+        .calendar-day { text-align: center; padding: 10px 0; font-weight: bold; }
+        .calendar-date { text-align: center; padding: 10px 0; border-radius: 4px; cursor: pointer; }
+        .calendar-date.selected { background: var(--primary); color: white; }
+        .calendar-date.disabled { color: #ccc; cursor: not-allowed; }
         
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
+        .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .time-slot { padding: 8px; text-align: center; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; }
+        .time-slot.selected { background: var(--primary); color: white; border-color: var(--primary); }
         
-        .logo span {
-            color: var(--primary);
-        }
+        footer { background: var(--secondary); color: white; padding: 30px 0; text-align: center; margin-top: 40px; }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 1.1rem;
-        }
-        
-        nav a:hover {
-            color: var(--primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-        }
-        
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--secondary);
-            padding: 0.9rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #e6c04c;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        /* Services */
-        .services {
-            padding: 5rem 0;
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: var(--secondary);
-        }
-        
-        .section-title span {
-            color: var(--primary);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s;
-            border-top: 4px solid var(--primary);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .service-icon {
-            background-color: rgba(212, 175, 55, 0.1);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-        
-        .service-icon i {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-        
-        .service-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .service-card p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-        
-        /* Scheduler */
-        .scheduler {
-            padding: 5rem 0;
-            background-color: #f5f5f5;
-        }
-        
-        .scheduler-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-        
-        .form-container {
-            background: white;
-            border-radius: 10px;
-            padding: 2.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .form-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-            text-align: center;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--secondary);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.9rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-        }
-        
-        .calendar-container {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .calendar-header h3 {
-            font-size: 1.5rem;
-            color: var(--secondary);
-        }
-        
-        .nav-btn {
-            background: var(--primary);
-            color: var(--secondary);
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        
-        .nav-btn:hover {
-            background: #e6c04c;
-        }
-        
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .calendar-day {
-            text-align: center;
-            padding: 0.7rem 0;
-            font-weight: 600;
-            color: var(--gray);
-        }
-        
-        .calendar-date {
-            text-align: center;
-            padding: 0.9rem 0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-        
-        .calendar-date:hover {
-            background-color: rgba(212, 175, 55, 0.2);
-        }
-        
-        .calendar-date.selected {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .calendar-date.disabled {
-            color: #ccc;
-            cursor: not-allowed;
-        }
-        
-        .calendar-date.today {
-            border: 2px solid var(--primary);
-        }
-        
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        
-        .time-slot {
-            padding: 0.8rem;
-            text-align: center;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-        
-        .time-slot:hover {
-            border-color: var(--primary);
-        }
-        
-        .time-slot.selected {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        .time-slot.unavailable {
-            background-color: #f0f0f0;
-            color: #aaa;
-            cursor: not-allowed;
-        }
-        
-        .barber-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #eee;
-        }
-        
-        .barber-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary);
-        }
-        
-        .barber-details h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .barber-details p {
-            color: var(--gray);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--secondary);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-            color: var(--primary);
-        }
-        
-        .footer-section p, .footer-section li {
-            color: #ccc;
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 1rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #333;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
-            color: #999;
-        }
-        
-        /* Confirmation Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 10px;
-            padding: 2.5rem;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-        }
-        
-        .modal-icon {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-        
-        .modal h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-        
-        .modal p {
-            margin-bottom: 1.5rem;
-            color: var(--gray);
-        }
-        
-        .modal-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--secondary);
-            color: white;
-        }
-        
-        /* Responsive */
         @media (max-width: 768px) {
-            .scheduler-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
+            .scheduler-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-cut"></i>
-                    <h1>Barbearia <span>Clássica</span></h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#services">Serviços</a></li>
-                        <li><a href="#scheduler">Agendar</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <div class="logo">Barbearia <span>Clássica</span></div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="container">
-            <h2>Estilo e Precisão em Cada Corte</h2>
-            <p>Agende seu horário com nosso barbeiro especialista e saia com um visual renovado e impecável.</p>
-            <a href="#scheduler" class="btn">Agendar Horário</a>
+            <h2>Agende Seu Horário</h2>
+            <p>Corte preciso e estilo impecável</p>
+            <button class="btn" onclick="document.getElementById('scheduler').scrollIntoView()">Agendar Agora</button>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Nossos <span>Serviços</span></h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-scissors"></i>
-                    </div>
-                    <h3>Corte de Cabelo</h3>
-                    <p>Corte moderno ou clássico com técnicas precisas para valorizar seu estilo.</p>
-                    <div class="price">R$ 35</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-air-freshener"></i>
-                    </div>
-                    <h3>Barba</h3>
-                    <p>Aparar, modelar e definir com produtos de alta qualidade para um visual impecável.</p>
-                    <div class="price">R$ 25</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <h3>Combo Completo</h3>
-                    <p>Corte + barba + cuidados com a pele. A experiência completa de barbearia.</p>
-                    <div class="price">R$ 50</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scheduler Section -->
     <section id="scheduler" class="scheduler">
         <div class="container">
-            <h2 class="section-title">Agende seu <span>Horário</span></h2>
+            <h2 style="text-align: center; margin-bottom: 30px;">Agendamento</h2>
             <div class="scheduler-container">
                 <div class="form-container">
-                    <h3 class="form-title">Preencha seus dados</h3>
+                    <h3 style="margin-bottom: 20px;">Seus Dados</h3>
                     <form id="scheduling-form">
                         <div class="form-group">
-                            <label for="name">Nome Completo</label>
-                            <input type="text" id="name" class="form-control" placeholder="Seu nome completo" required>
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="phone">Telefone</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="(11) 99999-9999" required>
+                            <input type="tel" id="phone" required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" class="form-control" placeholder="seu@email.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Serviço Desejado</label>
-                            <select id="service" class="form-control" required>
-                                <option value="">Selecione um serviço</option>
-                                <option value="corte">Corte de Cabelo - R$ 35</option>
+                            <label for="service">Serviço</label>
+                            <select id="service" required>
+                                <option value="">Selecione</option>
+                                <option value="corte">Corte - R$ 35</option>
                                 <option value="barba">Barba - R$ 25</option>
-                                <option value="combo">Combo Completo - R$ 50</option>
+                                <option value="combo">Combo - R$ 50</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
-                            <label>Data e Horário Selecionados</label>
-                            <div class="selected-date-time">
-                                <p id="selected-date">Data: Não selecionada</p>
-                                <p id="selected-time">Horário: Não selecionado</p>
-                            </div>
+                            <label>Data e Horário</label>
+                            <p id="selected-date">Data: Não selecionada</p>
+                            <p id="selected-time">Horário: Não selecionado</p>
                         </div>
-                        
-                        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Confirmar Agendamento</button>
+                        <button type="submit" class="btn" style="width: 100%;">Confirmar Agendamento</button>
                     </form>
-                    
-                    <div class="barber-info">
-                        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=654&q=80" alt="Barbeiro" class="barber-avatar">
-                        <div class="barber-details">
-                            <h4>Carlos Silva</h4>
-                            <p>Barbeiro Profissional - 10 anos de experiência</p>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="calendar-container">
@@ -659,11 +103,152 @@
                     </div>
                     
                     <div class="calendar-grid" id="calendar-dates">
-                        <!-- Days of week -->
-                        <div class="calendar-day">Dom</div>
-                        <div class="calendar-day">Seg</div>
-                        <div class="calendar-day">Ter</div>
-                        <div class="calendar-day">Qua</div>
-                        <div class="calendar-day">Qui</div>
-                        <div class="calendar-day">Sex</div>
-                        <div class="calendar-day"
+                        <div class="calendar-day">Dom</div><div class="calendar-day">Seg</div>
+                        <div class="calendar-day">Ter</div><div class="calendar-day">Qua</div>
+                        <div class="calendar-day">Qui</div><div class="calendar-day">Sex</div>
+                        <div class="calendar-day">Sáb</div>
+                    </div>
+                    
+                    <h4 style="margin: 15px 0 10px;">Horários Disponíveis</h4>
+                    <div class="time-slots" id="time-slots">
+                        <div class="time-slot">09:00</div><div class="time-slot">10:00</div>
+                        <div class="time-slot">11:00</div><div class="time-slot">14:00</div>
+                        <div class="time-slot">15:00</div><div class="time-slot">16:00</div>
+                        <div class="time-slot">17:00</div><div class="time-slot">18:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Barbearia Clássica &copy; 2023</p>
+            <p>Segunda a Sábado: 9h às 19h</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentMonthElement = document.getElementById('current-month');
+            const calendarGrid = document.getElementById('calendar-dates');
+            const prevMonthButton = document.getElementById('prev-month');
+            const nextMonthButton = document.getElementById('next-month');
+            const timeSlotsContainer = document.getElementById('time-slots');
+            const selectedDateElement = document.getElementById('selected-date');
+            const selectedTimeElement = document.getElementById('selected-time');
+            const schedulingForm = document.getElementById('scheduling-form');
+            
+            let currentDate = new Date();
+            let selectedDate = null;
+            let selectedTime = null;
+            
+            // Render calendar
+            function renderCalendar(date) {
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                currentMonthElement.textContent = `${monthNames[month]} ${year}`;
+                
+                // Clear existing dates
+                while (calendarGrid.children.length > 7) {
+                    calendarGrid.removeChild(calendarGrid.lastChild);
+                }
+                
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                
+                // Add empty cells
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.classList.add('calendar-date', 'disabled');
+                    calendarGrid.appendChild(emptyCell);
+                }
+                
+                // Add days
+                const today = new Date();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateCell = document.createElement('div');
+                    dateCell.classList.add('calendar-date');
+                    dateCell.textContent = day;
+                    
+                    const cellDate = new Date(year, month, day);
+                    if (cellDate < today) {
+                        dateCell.classList.add('disabled');
+                    } else {
+                        dateCell.addEventListener('click', function() {
+                            document.querySelectorAll('.calendar-date').forEach(cell => {
+                                cell.classList.remove('selected');
+                            });
+                            dateCell.classList.add('selected');
+                            selectedDate = new Date(year, month, day);
+                            const formattedDate = `${day}/${month + 1}/${year}`;
+                            selectedDateElement.textContent = `Data: ${formattedDate}`;
+                            selectedTime = null;
+                            selectedTimeElement.textContent = 'Horário: Não selecionado';
+                        });
+                    }
+                    calendarGrid.appendChild(dateCell);
+                }
+            }
+            
+            // Time slots
+            timeSlotsContainer.addEventListener('click', function(e) {
+                if (e.target.classList.contains('time-slot')) {
+                    document.querySelectorAll('.time-slot').forEach(slot => {
+                        slot.classList.remove('selected');
+                    });
+                    e.target.classList.add('selected');
+                    selectedTime = e.target.textContent;
+                    selectedTimeElement.textContent = `Horário: ${selectedTime}`;
+                }
+            });
+            
+            // Form submission
+            schedulingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!selectedDate || !selectedTime) {
+                    alert('Por favor, selecione uma data e horário.');
+                    return;
+                }
+                
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const service = document.getElementById('service').value;
+                
+                if (!name || !phone || !service) {
+                    alert('Por favor, preencha todos os campos.');
+                    return;
+                }
+                
+                const formattedDate = `${selectedDate.getDate()}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`;
+                alert(`Agendamento confirmado!\n\nCliente: ${name}\nServiço: ${document.getElementById('service').options[document.getElementById('service').selectedIndex].text}\nData: ${formattedDate}\nHorário: ${selectedTime}`);
+                
+                // Reset form
+                schedulingForm.reset();
+                document.querySelectorAll('.calendar-date').forEach(cell => cell.classList.remove('selected'));
+                document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+                selectedDate = null;
+                selectedTime = null;
+                selectedDateElement.textContent = 'Data: Não selecionada';
+                selectedTimeElement.textContent = 'Horário: Não selecionado';
+            });
+            
+            // Month navigation
+            prevMonthButton.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar(currentDate);
+            });
+            
+            nextMonthButton.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar(currentDate);
+            });
+            
+            // Initialize
+            renderCalendar(currentDate);
+        });
+    </script>
+</body>
+    </html>
