@@ -3,521 +3,612 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecom Start - Curso Completo de Ecommerce</title>
+    <title>Guarda-Roupa Dobrável - Organize Seu Espaço com Praticidade</title>
     <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            color: #333;
+            color: var(--text);
             line-height: 1.6;
-            background: #fff;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         /* Header */
-        .header {
-            background: #000;
+        header {
+            background-color: var(--primary);
             color: white;
-            padding: 15px 20px;
-            text-align: center;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
         }
         
-        .header-tag {
-            background: #ff4444;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
             font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #000 0%, #333 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 80px 0;
             text-align: center;
-            position: relative;
         }
         
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 20px;
-            font-weight: bold;
+            line-height: 1.2;
         }
         
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
         
-        .hero-badge {
-            background: #ff4444;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
+        .btn {
             display: inline-block;
-            margin: 20px 0;
-        }
-        
-        /* Video Container */
-        .video-container {
-            max-width: 800px;
-            margin: 30px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        .video-placeholder {
-            background: #333;
+            background-color: var(--secondary);
             color: white;
-            padding: 150px 20px;
-            text-align: center;
-        }
-        
-        /* CTA Button */
-        .cta-button {
-            background: #ff4444;
-            color: white;
-            padding: 20px 40px;
-            border: none;
+            padding: 14px 30px;
             border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 20px 0;
-            transition: all 0.3s ease;
-            display: inline-block;
             text-decoration: none;
-        }
-        
-        .cta-button:hover {
-            background: #ff2222;
-            transform: translateY(-3px);
-        }
-        
-        /* Proof Section */
-        .proof {
-            padding: 60px 20px;
-            background: #f8f9fa;
-            text-align: center;
-        }
-        
-        .proof-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 30px 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
             font-weight: bold;
-            color: #ff4444;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
         }
         
-        /* Problem Section */
-        .problem {
-            padding: 80px 20px;
-            background: white;
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         
-        .problem h2 {
+        /* Video Section */
+        .video-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
             text-align: center;
             margin-bottom: 50px;
-            color: #333;
+            font-size: 2.2rem;
+            color: var(--primary);
         }
         
-        .problem-grid {
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            max-width: 1200px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .benefits-list {
+            max-width: 800px;
             margin: 0 auto;
         }
         
-        .problem-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            border-left: 5px solid #ff4444;
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--light);
+            border-radius: 10px;
         }
         
-        .problem-card .emoji {
-            font-size: 3rem;
+        .benefit-icon {
+            font-size: 24px;
+            margin-right: 20px;
+            color: var(--accent);
+            min-width: 40px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
             margin-bottom: 20px;
         }
         
-        /* Solution Section */
-        .solution {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-            color: white;
-            text-align: center;
-        }
-        
-        .solution h2 {
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-        }
-        
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 40px auto;
-        }
-        
-        .module-card {
-            background: rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-        
-        /* Offer Section */
-        .offer {
-            padding: 80px 20px;
-            background: white;
-            text-align: center;
-        }
-        
-        .offer-box {
-            max-width: 600px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #ff4444, #ff6666);
-            color: white;
-            padding: 50px 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(255,68,68,0.3);
-        }
-        
-        .price-old {
-            text-decoration: line-through;
-            opacity: 0.7;
-            font-size: 1.5rem;
-        }
-        
-        .price-new {
-            font-size: 3rem;
+        .testimonial-author {
             font-weight: bold;
-            margin: 10px 0;
+            color: var(--primary);
         }
         
-        .bonus-list {
-            text-align: left;
-            margin: 30px 0;
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: white;
         }
         
-        .bonus-list li {
-            margin: 15px 0;
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .price {
+            font-size: 3rem;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .price span {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+        
+        .pricing-features {
             list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 15px;
             padding-left: 30px;
             position: relative;
         }
         
-        .bonus-list li:before {
-            content: "🎁";
+        .pricing-features li:before {
+            content: "✓";
             position: absolute;
             left: 0;
-        }
-        
-        /* Guarantee Section */
-        .guarantee {
-            padding: 60px 20px;
-            background: #f8f9fa;
-            text-align: center;
-        }
-        
-        .guarantee-box {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            border: 3px solid #4ecdc4;
+            color: var(--accent);
+            font-weight: bold;
         }
         
         /* FAQ Section */
         .faq {
-            padding: 80px 20px;
-            background: white;
-        }
-        
-        .faq h2 {
-            text-align: center;
-            margin-bottom: 50px;
+            padding: 80px 0;
+            background-color: var(--light);
         }
         
         .faq-item {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            background: #f8f9fa;
-            padding: 25px;
+            margin-bottom: 20px;
             border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
         
         .faq-question {
+            background-color: white;
+            padding: 20px;
             font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            background-color: white;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
         }
         
         /* Footer */
         footer {
-            background: #000;
+            background-color: var(--dark);
             color: white;
-            padding: 40px 20px;
-            text-align: center;
+            padding: 50px 0 20px;
         }
         
-        /* Timer */
-        .timer {
-            background: rgba(0,0,0,0.3);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            margin: 20px 0;
-            display: inline-block;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
-
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.1rem;
+            .section-title {
+                font-size: 1.8rem;
             }
             
-            .price-new {
-                font-size: 2.5rem;
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .benefit-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <div class="header">
-        <div class="header-tag">CURSO COMPLETO DE ECOMMERCE</div>
-    </div>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Organize<span>Fácil</span></a>
+                <a href="#comprar" class="btn">Comprar Agora</a>
+            </div>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>COMEÇE SEU ECOMMERCE DO ZERO E FATURE R$ 5.000/MÊS</h1>
-            <p class="hero-subtitle">Mesmo Sem Experiência, Sem Produto Próprio e Sem Aparecer</p>
-            
-            <div class="hero-badge">
-                🚀 MÉTODO 100% COMPROVADO
-            </div>
+            <h1>Guarda-Roupa Dobrável: A Solução Definitiva Para Organizar Sua Casa</h1>
+            <p>Ganhe espaço, organize suas roupas e transforme qualquer ambiente com nosso guarda-roupa dobrável de alta qualidade. Prático, resistente e incrivelmente versátil.</p>
+            <a href="#comprar" class="btn">Quero Organizar Minha Casa</a>
+        </div>
+    </section>
 
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title">Veja Como É Fácil Montar e Usar</h2>
             <div class="video-container">
-                <div class="video-placeholder">
-                    🎥 VÍDEO DE APRESENTAÇÃO<br>
-                    (Vídeo real da página original aqui)
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/o0KvF8ThN-k" title="Guarda-Roupa Dobrável - Demonstração do Produto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-
-            <a href="#offer" class="cta-button">
-                🚀 QUERO COMEÇAR AGORA!
-            </a>
-            
-            <div class="timer">⏰ PROMOÇÃO TERMINA EM: <span id="countdown">02:59:59</span></div>
         </div>
     </section>
 
-    <!-- Proof Section -->
-    <section class="proof">
-        <h2>+3.247 ALUNOS JÁ TRANSFORMARAM SEUS RESULTADOS</h2>
-        <div class="proof-stats">
-            <div class="stat-card">
-                <div class="stat-number">94%</div>
-                <p>Taxa de Satisfação</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">R$ 5K+</div>
-                <p>Faturamento Médio</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">87%</div>
-                <p>Conseguem Resultados</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">4.9</div>
-                <p>Avaliação dos Alunos</p>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Por Que Escolher Nosso Guarda-Roupa Dobrável?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Montagem Rápida</h3>
+                    <p>Não precisa de ferramentas nem conhecimentos especiais. Monte em menos de 5 minutos!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Economiza Espaço</h3>
+                    <p>Perfeito para apartamentos pequenos, quartos de hóspedes ou qualquer ambiente com espaço limitado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Super Resistente</h3>
+                    <p>Estrutura reforçada que suporta até 50kg. Feito para durar e organizar todas as suas roupas.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem Section -->
-    <section class="problem">
-        <h2>VOCÊ JÁ PASSOU POR ISSO?</h2>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <div class="emoji">😫</div>
-                <h3>Sem Tempo Extra</h3>
-                <p>Trabalha o dia todo e não tem horas livres para começar um negócio</p>
-            </div>
-            <div class="problem-card">
-                <div class="emoji">💰</div>
-                <h3>Sem Capital</h3>
-                <p>Acha que precisa de muito dinheiro para investir em ecommerce</p>
-            </div>
-            <div class="problem-card">
-                <div class="emoji">🤯</div>
-                <h3>Sem Conhecimento</h3>
-                <p>Não entende de tráfego, anúncios ou gestão de loja virtual</p>
-            </div>
-            <div class="problem-card">
-                <div class="emoji">📦</div>
-                <h3>Sem Produto</h3>
-                <p>Não tem um produto próprio para vender online</p>
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Vantagens Exclusivas</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>Organização Inteligente</h3>
+                        <p>Compartimentos específicos para cabides, gavetas e prateleiras, permitindo organizar todos os tipos de roupas e acessórios.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>Fácil de Transportar</h3>
+                        <p>Dobrável e leve, você pode levá-lo para qualquer lugar: viagens, mudanças ou simplesmente reorganizar os ambientes.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>Material de Qualidade</h3>
+                        <p>Feito com tecido resistente e estrutura metálica robusta, garantindo durabilidade e estabilidade.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>Versátil e Adaptável</h3>
+                        <p>Use como guarda-roupa principal, complementar, em closets, quartos, áreas de serviço ou até mesmo em home offices.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="solution">
-        <h2>O ECOM START VAI TE ENSINAR:</h2>
-        <div class="modules-grid">
-            <div class="module-card">
-                <h4>🎯 Estratégia</h4>
-                <p>Encontre produtos vencedores sem estoque</p>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Comprei para meu apartamento pequeno e mudou completamente minha organização. Fácil de montar e muito resistente!"</p>
+                    <p class="testimonial-author">- Maria S., São Paulo</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Perfeito para organizar as roupas de inverno que ficam guardadas boa parte do ano. Quando não estou usando, dobro e guardo no armário."</p>
+                    <p class="testimonial-author">- João P., Rio de Janeiro</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Uso no meu home office para organizar materiais e também algumas roupas. Muito versátil e prático!"</p>
+                    <p class="testimonial-author">- Ana L., Belo Horizonte</p>
+                </div>
             </div>
-            <div class="module-card">
-                <h4>🛒 Loja Virtual</h4>
-                <p>Monte sua loja profissional em 1 dia</p>
-            </div>
-            <div class="module-card">
-                <h4>📱 Tráfego</h4>
-                <p>Aprenda anúncios que convertem</p>
-            </div>
-            <div class="module-card">
-                <h4>💰 Vendas</h4>
-                <p>Feche vendas todos os dias</p>
-            </div>
-            <div class="module-card">
-                <h4>📈 Escala</h4>
-                <p>Aumente seu faturamento</p>
-            </div>
-            <div class="module-card">
-                <h4>🔄 Automação</h4>
-                <p>Deixe o sistema trabalhar por você</p>
-            </div>
-        </div>
-        
-        <a href="#offer" class="cta-button">
-            🚀 QUERO ME INSCREVER AGORA!
-        </a>
-    </section>
-
-    <!-- Offer Section -->
-    <section class="offer" id="offer">
-        <div class="offer-box">
-            <h2>OFERTA ESPECIAL POR TEMPO LIMITADO</h2>
-            
-            <div class="price-old">De R$ 997</div>
-            <div class="price-new">R$ 497</div>
-            <p>ou 12x de R$ 41,42</p>
-            
-            <ul class="bonus-list">
-                <li><strong>Bônus 1:</strong> Curso de Tráfego Avançado</li>
-                <li><strong>Bônus 2:</strong> Mentoria em Grupo Semanal</li>
-                <li><strong>Bônus 3:</strong> Comunidade Exclusiva</li>
-                <li><strong>Bônus 4:</strong> Templates Prontos</li>
-            </ul>
-
-            <a href="#offer" class="cta-button" style="background: white; color: #ff4444;">
-                🚀 QUERO GARANTIR MINHA VAGA!
-            </a>
-            
-            <div class="timer">⏰ ESTA OFERTA TERMINA EM: <span id="countdown2">02:59:59</span></div>
         </div>
     </section>
 
-    <!-- Guarantee Section -->
-    <section class="guarantee">
-        <div class="guarantee-box">
-            <h2>🛡️ GARANTIA DE 7 DIAS</h2>
-            <p>Se em 7 dias você achar que o curso não é para você, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
-            <p><strong>Você não tem nada a perder!</strong></p>
+    <!-- Pricing Section -->
+    <section class="pricing" id="comprar">
+        <div class="container">
+            <h2 class="section-title">Adquira o Seu Agora</h2>
+            <div class="pricing-card">
+                <h3>Guarda-Roupa Dobrável Premium</h3>
+                <div class="price"><span>R$</span>147,90</div>
+                <p>ou 12x de R$ 14,90 sem juros</p>
+                <ul class="pricing-features">
+                    <li>Montagem rápida e fácil (sem ferramentas)</li>
+                    <li>Suporta até 50kg de peso</li>
+                    <li>Compartimento para cabides e prateleiras</li>
+                    <li>Material resistente e durável</li>
+                    <li>Dobrável para fácil armazenamento</li>
+                    <li>Garantia de 1 ano</li>
+                </ul>
+                <a href="#" class="btn">Comprar Agora</a>
+                <p style="margin-top: 15px; font-size: 0.9rem;">Entrega para todo o Brasil</p>
+            </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
     <section class="faq">
-        <h2>PERGUNTAS FREQUENTES</h2>
-        <div class="faq-item">
-            <div class="faq-question">Preciso ter experiência em ecommerce?</div>
-            <p>Não! O curso é feito para iniciantes absolutos. Começamos do zero absoluto.</p>
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quanto tempo leva para montar o guarda-roupa?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>A montagem é extremamente simples e rápida. A maioria das pessoas consegue montar em menos de 5 minutos, sem necessidade de ferramentas ou conhecimentos especiais.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quanto peso o guarda-roupa suporta?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nosso guarda-roupa dobrável tem estrutura reforçada e suporta até 50kg distribuídos, sendo mais do que suficiente para organizar todas as suas roupas e acessórios.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quais as dimensões do produto?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Quando montado, o guarda-roupa mede aproximadamente 120cm de altura, 80cm de largura e 45cm de profundidade. Dobrado, ocupa muito pouco espaço para armazenamento.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Qual o prazo de entrega?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>O prazo de entrega varia de acordo com sua localização. Em média, as entregas são realizadas em 5 a 10 dias úteis para a maioria das regiões do Brasil.</p>
+                </div>
+            </div>
         </div>
-        <div class="faq-item">
-            <div class="faq-question">Quanto preciso investir além do curso?</div>
-            <p>Apenas R$ 50-100 para testar seus primeiros produtos. Ensino métodos com baixo investimento.</p>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">Em quanto tempo vou ter resultados?</div>
-            <p>A maioria dos alunos tem suas primeiras vendas em 2-3 semanas aplicando o método.</p>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">Preciso aparecer ou gravar vídeos?</div>
-            <p>Não! Todo o método é feito sem precisar aparecer ou gravar conteúdo.</p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Não Deixe a Desorganização Dominar Sua Casa</h2>
+            <p>Transforme seus espaços com o guarda-roupa dobrável que vai revolucionar sua organização. Garanta o seu agora com condições especiais!</p>
+            <a href="#comprar" class="btn">Quero Meu Guarda-Roupa</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2024 Ecom Start - Todos os direitos reservados.</p>
-        <p>contato@ecomstart.com | Termos de Uso | Política de Privacidade</p>
-    </footer>
-
-    <script>
-        // Countdown Timer
-        function startCountdown() {
-            let time = 3 * 60 * 60; // 3 horas
-            
-            function updateTimer() {
-                const hours = Math.floor(time / 3600);
-                const minutes = Math.floor((time % 3600) / 60);
-                const seconds = time % 60;
-                
-                const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                document.getElementById('countdown').textContent = timeString;
-                document.getElementById('countdown2').textContent = timeString;
-                
-                if (time > 0) time--;
-            }
-            
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        }
-        
-        document.addEventListener('DOMContentLoaded', startCountdown);
-    </script>
-</body>
-    </html>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>OrganizeFácil</h3>
+                    <p>Soluções práticas para organizar sua casa e sua vida. Produtos de qualidade que fazem a diferença no seu dia a dia.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#comprar">Comprar</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Suporte</h3>
+                    <ul>
+                        <li><a href="#">Perguntas Frequentes</a></li>
+                        <li><a href="#">Política de Entrega</a></li>
+                      
