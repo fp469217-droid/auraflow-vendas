@@ -3,107 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guarda-Roupa Dobrável | Glamorix - Organização com Estilo</title>
-    <meta name="description" content="Guarda-roupa dobrável premium da Glamorix. Organize seu espaço com estilo! Frete grátis para Ibicuitinga. Aproveite nossa promoção por tempo limitado!">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Guarda-Roupa Dobrável | Glamorix</title>
+    <meta name="description" content="Guarda-roupa dobrável premium. Organize seu espaço com estilo! Frete grátis para Ibicuitinga. Promoção por tempo limitado!">
     <style>
         :root {
-            --rosa-principal: #e91e63;
-            --rosa-claro: #f8bbd9;
+            --rosa: #e91e63;
             --rosa-escuro: #c2185b;
-            --preto: #212121;
-            --cinza: #757575;
-            --branco: #ffffff;
+            --preto: #000;
+            --cinza: #333;
+            --branco: #fff;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: var(--preto);
+            background: var(--preto);
+            color: var(--branco);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background: linear-gradient(to right, var(--preto), var(--rosa-escuro));
-            color: var(--branco);
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
+            padding: 0 15px;
         }
         
         .countdown {
-            background-color: var(--rosa-principal);
-            color: white;
-            padding: 10px;
+            background: var(--rosa);
+            color: var(--branco);
+            padding: 12px;
             text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        .countdown-timer {
+        .timer {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin-top: 5px;
+            font-size: 1.1rem;
         }
         
-        .timer-unit {
+        .timer span {
             background: var(--preto);
-            padding: 5px 10px;
-            border-radius: 5px;
-            min-width: 50px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            min-width: 40px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--preto), var(--cinza));
+            padding: 20px 0;
+            text-align: center;
         }
         
         .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--rosa);
+            margin-bottom: 5px;
         }
         
         .slogan {
-            font-size: 1.2rem;
+            color: var(--branco);
             opacity: 0.9;
         }
         
         .hero {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             padding: 40px 0;
-            background-color: var(--branco);
+            align-items: center;
         }
         
-        .hero-content {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
-        }
-        
-        .hero-video {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
         
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
+            border-radius: 12px;
             overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
         }
         
         .video-container iframe {
@@ -116,80 +112,83 @@
         }
         
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
-            color: var(--rosa-principal);
+            color: var(--rosa);
+            line-height: 1.3;
         }
         
         h2 {
             font-size: 1.8rem;
-            margin: 20px 0;
-            color: var(--rosa-principal);
+            margin: 25px 0 15px;
+            color: var(--rosa);
         }
         
         .price {
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .old-price {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             text-decoration: line-through;
-            color: var(--cinza);
+            color: #999;
         }
         
         .new-price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--rosa-principal);
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--rosa);
         }
         
-        .highlight {
-            background-color: var(--rosa-claro);
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            margin: 10px 0;
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .benefit {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            padding: 12px 15px;
+            background: var(--cinza);
+            border-radius: 8px;
+            font-weight: 600;
         }
         
-        .highlight i {
-            color: var(--rosa-principal);
+        .benefit i {
+            color: var(--rosa);
+            font-size: 1.2rem;
         }
         
         .cta-button {
-            display: inline-block;
-            background: linear-gradient(to right, var(--rosa-principal), var(--rosa-escuro));
+            display: block;
+            background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
             color: var(--branco);
-            padding: 18px 35px;
-            font-size: 1.3rem;
-            font-weight: bold;
+            padding: 18px 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
             text-decoration: none;
             border-radius: 50px;
-            margin: 20px 0;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+            margin: 25px 0;
             text-align: center;
-            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
         }
         
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.6);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.6);
         }
         
-        .whatsapp-button {
-            background: linear-gradient(to right, #25D366, #128C7E);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
         }
         
         .features {
-            padding: 40px 0;
-            background-color: var(--branco);
+            padding: 50px 0;
+            background: var(--cinza);
         }
         
         .features-grid {
@@ -201,39 +200,38 @@
         
         .feature {
             text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            padding: 25px 20px;
+            background: var(--preto);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
         }
         
         .feature:hover {
             transform: translateY(-5px);
         }
         
-        .feature-icon {
+        .feature i {
             font-size: 2.5rem;
+            color: var(--rosa);
             margin-bottom: 15px;
-            color: var(--rosa-principal);
         }
         
         .gallery {
-            padding: 40px 0;
-            background-color: #f9f9f9;
+            padding: 50px 0;
         }
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 25px;
         }
         
         .gallery-item {
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
         }
         
         .gallery-item:hover {
@@ -242,14 +240,14 @@
         
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             display: block;
         }
         
         .testimonials {
-            padding: 40px 0;
-            background-color: var(--branco);
+            padding: 50px 0;
+            background: var(--cinza);
         }
         
         .testimonial-grid {
@@ -260,10 +258,10 @@
         }
         
         .testimonial {
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            background-color: #f9f9f9;
+            padding: 25px;
+            background: var(--preto);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .testimonial-text {
@@ -272,52 +270,19 @@
         }
         
         .testimonial-author {
-            font-weight: bold;
-            color: var(--rosa-principal);
-        }
-        
-        .guarantee {
-            padding: 40px 0;
-            background: linear-gradient(to right, var(--preto), var(--rosa-escuro));
-            color: var(--branco);
-            text-align: center;
-        }
-        
-        .guarantee h2 {
-            color: var(--branco);
-        }
-        
-        .payment-info {
-            padding: 40px 0;
-            background-color: var(--branco);
-            text-align: center;
-        }
-        
-        .payment-methods {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .payment-method {
-            background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 10px;
-            min-width: 150px;
+            font-weight: 700;
+            color: var(--rosa);
         }
         
         .social-section {
             padding: 40px 0;
-            background-color: #f9f9f9;
             text-align: center;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
             flex-wrap: wrap;
         }
@@ -325,14 +290,14 @@
         .social-link {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             padding: 12px 20px;
-            background-color: var(--branco);
+            background: var(--cinza);
             border-radius: 50px;
             text-decoration: none;
-            color: var(--preto);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            color: var(--branco);
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
         
         .social-link:hover {
@@ -341,26 +306,45 @@
         
         .instagram {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: white;
         }
         
         .facebook {
             background: #3b5998;
-            color: white;
+        }
+        
+        .payment-info {
+            padding: 40px 0;
+            text-align: center;
+            background: var(--cinza);
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .payment-method {
+            background: var(--preto);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
         }
         
         footer {
-            background-color: var(--preto);
-            color: var(--branco);
-            padding: 30px 0;
+            background: var(--preto);
+            padding: 40px 0 20px;
             text-align: center;
+            border-top: 1px solid var(--cinza);
         }
         
         .footer-logo {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: var(--rosa-principal);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--rosa);
+            margin-bottom: 10px;
         }
         
         .contact-info {
@@ -371,16 +355,16 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25D366;
-            color: white;
+            background: #25D366;
+            color: var(--branco);
             width: 60px;
             height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 1000;
             animation: pulse 2s infinite;
             text-decoration: none;
@@ -391,35 +375,17 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .hero {
-                flex-direction: column;
-            }
-            
-            .countdown-timer {
-                flex-wrap: wrap;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="countdown">
         <div>OFERTA POR TEMPO LIMITADO!</div>
-        <div class="countdown-timer">
-            <div class="timer-unit"><span id="days">00</span>d</div>
-            <div class="timer-unit"><span id="hours">00</span>h</div>
-            <div class="timer-unit"><span id="minutes">00</span>m</div>
-            <div class="timer-unit"><span id="seconds">00</span>s</div>
+        <div class="timer">
+            <span id="days">00</span>d
+            <span id="hours">00</span>h
+            <span id="minutes">00</span>m
+            <span id="seconds">00</span>s
         </div>
     </div>
     
@@ -434,43 +400,36 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Guarda-Roupa Dobrável Premium</h1>
-                <p>Organize seu espaço com elegância e praticidade! Nosso guarda-roupa dobrável é a solução perfeita para quem busca otimizar ambientes sem abrir mão do estilo.</p>
+                <p>Organize seu espaço com elegância e praticidade! Solução perfeita para otimizar ambientes sem abrir mão do estilo.</p>
                 
                 <div class="price">
                     <div class="old-price">De R$ 299,00</div>
-                    <div class="new-price">Por apenas R$ 179,00</div>
+                    <div class="new-price">Por R$ 179,00</div>
                 </div>
                 
-                <div class="highlight">
-                    <i class="fas fa-shipping-fast"></i>
-                    <span>FRETE GRÁTIS para Ibicuitinga</span>
+                <div class="benefits">
+                    <div class="benefit">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>FRETE GRÁTIS para Ibicuitinga</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-box"></i>
+                        <span>PRONTA ENTREGA</span>
+                    </div>
+                    <div class="benefit">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <span>PAGUE NA ENTREGA</span>
+                    </div>
                 </div>
                 
-                <div class="highlight">
-                    <i class="fas fa-box"></i>
-                    <span>PRODUTOS A PRONTA ENTREGA</span>
-                </div>
-                
-                <div class="highlight">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <span>VOCÊ SÓ PAGA QUANDO RECEBER</span>
-                </div>
-                
-                <div class="highlight">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>GARANTIA DE 30 DIAS</span>
-                </div>
-                
-                <p>Não perca esta oportunidade única de transformar seu espaço com um produto de alta qualidade por um preço incrível!</p>
-                
-                <a href="https://wa.me/5585997068677?text=Olá! Gostaria de comprar o Guarda-Roupa Dobrável Glamorix" class="cta-button whatsapp-button">
-                    <i class="fab fa-whatsapp"></i> COMPRAR VIA WHATSAPP
+                <a href="https://wa.me/5585997068677?text=Olá! Gostaria de comprar o Guarda-Roupa Dobrável Glamorix" class="cta-button whatsapp">
+                    <i class="fab fa-whatsapp"></i> COMPRAR AGORA
                 </a>
             </div>
             
             <div class="hero-video">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/qHmgfgonJaI" title="Guarda-Roupa Dobrável - Glamorix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/qHmgfgonJaI" title="Guarda-Roupa Dobrável" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -478,30 +437,27 @@
     
     <section class="features">
         <div class="container">
-            <h2>Por que escolher nosso Guarda-Roupa Dobrável?</h2>
+            <h2>Vantagens Exclusivas</h2>
             <div class="features-grid">
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <i class="fas fa-truck"></i>
                     <h3>Entrega Rápida</h3>
-                    <p>Receba seu produto em poucos dias, com frete grátis para Ibicuitinga.</p>
+                    <p>Receba em poucos dias com frete grátis</p>
                 </div>
-                
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <i class="fas fa-gem"></i>
                     <h3>Alta Qualidade</h3>
-                    <p>Material resistente e durável, com acabamento impecável.</p>
+                    <p>Material resistente e durável</p>
                 </div>
-                
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                    <i class="fas fa-tools"></i>
                     <h3>Fácil Montagem</h3>
-                    <p>Montagem rápida e prática, sem necessidade de ferramentas.</p>
+                    <p>Sem necessidade de ferramentas</p>
                 </div>
-                
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                    <i class="fas fa-palette"></i>
                     <h3>Design Moderno</h3>
-                    <p>Estilo contemporâneo que combina com qualquer decoração.</p>
+                    <p>Combina com qualquer decoração</p>
                 </div>
             </div>
         </div>
@@ -509,19 +465,16 @@
     
     <section class="gallery">
         <div class="container">
-            <h2>Conheça nosso produto</h2>
+            <h2>Conheça Nosso Produto</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Guarda-Roupa Dobrável - Vista Frontal">
+                    <img src="https://via.placeholder.com/400x300/333333/ffffff?text=PRODUTO+GLAMORIX" alt="Guarda-Roupa Dobrável Glamorix" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3VhcmRhJTIwcm91cGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Guarda-Roupa Dobrável - Vista Lateral">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Organização Interna" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8b3JnYW5pemF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Guarda-Roupa Dobrável - Organização Interna">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Guarda-Roupa Dobrável - Em Uso">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Design Moderno" loading="lazy">
                 </div>
             </div>
         </div>
@@ -529,20 +482,18 @@
     
     <section class="testimonials">
         <div class="container">
-            <h2>O que nossos clientes dizem</h2>
+            <h2>O Que Nossos Clientes Dizem</h2>
             <div class="testimonial-grid">
                 <div class="testimonial">
-                    <div class="testimonial-text">"Comprei para meu apartamento pequeno e foi a melhor decisão! Economiza espaço e é muito resistente. Paguei apenas quando recebi em casa!"</div>
+                    <div class="testimonial-text">"Comprei para meu apartamento pequeno e foi a melhor decisão! Economiza espaço e é muito resistente."</div>
                     <div class="testimonial-author">- Maria S., Ibicuitinga</div>
                 </div>
-                
                 <div class="testimonial">
-                    <div class="testimonial-text">"Fácil de montar e muito bonito. Superou minhas expectativas! A entrega foi super rápida e o produto chegou perfeito."</div>
+                    <div class="testimonial-text">"Fácil de montar e muito bonito. Superou minhas expectativas! A entrega foi rápida."</div>
                     <div class="testimonial-author">- João P., Fortaleza</div>
                 </div>
-                
                 <div class="testimonial">
-                    <div class="testimonial-text">"Produto de excelente qualidade pelo preço. Chegou antes do prazo e frete grátis! Amei a experiência de compra."</div>
+                    <div class="testimonial-text">"Produto de excelente qualidade pelo preço. Chegou antes do prazo e frete grátis!"</div>
                     <div class="testimonial-author">- Ana L., São Paulo</div>
                 </div>
             </div>
@@ -551,8 +502,8 @@
     
     <section class="social-section">
         <div class="container">
-            <h2>Siga a Glamorix nas Redes Sociais</h2>
-            <p>Fique por dentro das novidades, promoções exclusivas e inspirações de organização!</p>
+            <h2>Siga a Glamorix</h2>
+            <p>Acompanhe nossas novidades e promoções</p>
             <div class="social-links">
                 <a href="https://instagram.com/glamorix_" class="social-link instagram" target="_blank">
                     <i class="fab fa-instagram"></i>
@@ -566,42 +517,88 @@
         </div>
     </section>
     
-    <section class="guarantee">
-        <div class="container">
-            <h2>Garantia de Satisfação</h2>
-            <p>Oferecemos garantia de 30 dias para trocas e devoluções. Se não ficar satisfeito, devolvemos seu dinheiro!</p>
-        </div>
-    </section>
-    
     <section class="payment-info">
         <div class="container">
             <h2>Formas de Pagamento</h2>
             <p>Você só paga quando receber o produto!</p>
             <div class="payment-methods">
-                <div class="payment-method">Cartão de Crédito</div>
+                <div class="payment-method">Cartão</div>
                 <div class="payment-method">PIX</div>
                 <div class="payment-method">Boleto</div>
-                <div class="payment-method">Dinheiro na Entrega</div>
+                <div class="payment-method">Dinheiro</div>
             </div>
         </div>
     </section>
     
-    <section class="hero" id="comprar">
+    <footer>
         <div class="container">
-            <div class="hero-content">
-                <h2>Não perca esta oportunidade!</h2>
+            <div class="footer-logo">Glamorix</div>
+            <p>Organização com estilo e praticidade</p>
+            <div class="contact-info">
+                <p>WhatsApp: (85) 99706-8677</p>
+            </div>
+            <div class="social-links">
+                <a href="https://instagram.com/glamorix_" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com/glamorix" class="social-link facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.7;">&copy; 2023 Glamorix - Todos os direitos reservados</p>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/5585997068677?text=Olá! Gostaria de comprar o Guarda-Roupa Dobrável Glamorix" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Countdown Timer Otimizado
+        function updateTimer() {
+            const now = new Date();
+            const target = new Date();
+            target.setHours(23, 59, 59, 999);
+            
+            const diff = target - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
                 
-                <div class="price">
-                    <div class="old-price">De R$ 299,00</div>
-                    <div class="new-price">Por apenas R$ 179,00</div>
-                </div>
-                
-                <div class="highlight">
-                    <i class="fas fa-shipping-fast"></i>
-                    <span>FRETE GRÁTIS para Ibicuitinga</span>
-                </div>
-                
-                <div class="highlight">
-                    <i class="fas fa-box"></i>
-                    <span>PRODUTOS A PRONTA ENTREGA</span>
-      
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.querySelector('.countdown').innerHTML = "OFERTA EXPIRADA! <br>ÚLTIMAS UNIDADES";
+            }
+        }
+        
+        setInterval(updateTimer, 1000);
+        updateTimer();
+        
+        // Otimização de performance
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lazy loading para imagens
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                images.forEach(img => imageObserver.observe(img));
+            }
+        });
+    </script>
+</body>
+        </html>
