@@ -1,47 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>AuraFlow - Produtividade</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraFlow - Produtividade Consciente</title>
     <style>
-        body { 
-            font-family: Arial; 
-            background: #667eea;
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .hero-section {
+            padding: 60px 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .offer-box {
+            background: white;
+            color: #333;
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 30px 0;
+        }
+        
+        .offer-box h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
         .btn {
             background: #ff6b6b;
             color: white;
-            padding: 20px 40px;
+            padding: 18px 30px;
             border: none;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 15px 0;
             cursor: pointer;
             width: 100%;
-            max-width: 300px;
+            transition: all 0.3s ease;
+            display: block;
         }
-        .box {
-            background: white;
-            color: #333;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px auto;
-            max-width: 400px;
+        
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .timer {
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        
+        .benefits {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .benefits p {
+            margin: 5px 0;
+        }
+
+        /* Garantia */
+        .guarantee {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .guarantee p {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
-    <h1>🚀 AuraFlow</h1>
-    <p>Produtividade Consciente</p>
-    
-    <div class="box">
-        <h3>🎁 Oferta por Tempo Limitado</h3>
-        <button class="btn">QUERO COMPRAR - R$ 47</button>
-        <p>⏰ Termina em: 03:00:00</p>
+    <div class="hero-section">
+        <div class="container">
+            <h1>🚀 AuraFlow</h1>
+            <p class="subtitle">Pare de Brigar Com Sua Própria Mente</p>
+            
+            <div class="offer-box">
+                <h3>🎁 Oferta por Tempo Limitado</h3>
+                <button class="btn">👉 QUERO SER PRODUTIVO - R$ 47</button>
+                <p class="timer">⏰ Termina em: <span id="countdown">03:00:00</span></p>
+            </div>
+
+            <div class="benefits">
+                <p>✅ Método Científico Comprovado</p>
+                <p>✅ Resultados em Apenas 7 Dias</p>
+                <p>✅ Acesso Imediato e Vitalício</p>
+            </div>
+
+            <div class="guarantee">
+                <p>🛡️ <strong>Garantia de 7 Dias</strong></p>
+                <p>Se não amar, devolvemos 100% do seu investimento!</p>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Countdown Timer Simples
+        function startCountdown() {
+            let time = 3 * 60 * 60; // 3 horas
+            
+            function updateTimer() {
+                const hours = Math.floor(time / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+                
+                document.getElementById('countdown').textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (time > 0) time--;
+            }
+            
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', startCountdown);
+    </script>
 </body>
 </html>
