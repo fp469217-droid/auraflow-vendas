@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraFlow - Produtividade Consciente</title>
+    <title>AuraFlow - Método de Produtividade Consciente</title>
     <style>
         * {
             margin: 0;
@@ -13,133 +13,329 @@
         
         body {
             font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Hero Section */
+        .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        .hero-section {
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         
-        .container {
-            max-width: 500px;
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        /* Problema Section */
+        .problem {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .problem h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .problem-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
-        .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
+        .problem-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Solução Section */
+        .solution {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .solution h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .solution-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Benefícios Section */
+        .benefits {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .benefits h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefit-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .benefit-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Oferta Section */
+        .offer {
+            padding: 80px 20px;
+            background: white;
         }
         
         .offer-box {
-            background: white;
-            color: #333;
-            padding: 30px 25px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 50px 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(255,107,107,0.3);
         }
         
-        .offer-box h3 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
         }
         
         .btn {
-            background: #ff6b6b;
-            color: white;
-            padding: 18px 30px;
+            background: white;
+            color: #ff6b6b;
+            padding: 20px 40px;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            margin: 15px 0;
             cursor: pointer;
+            margin: 20px 0;
             width: 100%;
             transition: all 0.3s ease;
-            display: block;
         }
         
         .btn:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
-        .timer {
-            color: #ff6b6b;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 10px;
-        }
-        
-        .benefits {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .benefits p {
-            margin: 5px 0;
-        }
-
-        /* Garantia */
+        /* Garantia Section */
         .guarantee {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
+            padding: 60px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        
+        .guarantee-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid #4ecdc4;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            background: #f8f9fa;
+            padding: 25px;
             border-radius: 10px;
-            margin-top: 25px;
-            border-left: 4px solid #ff6b6b;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
         }
 
-        .guarantee p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        /* Timer */
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
-    <div class="hero-section">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <h1>🚀 AuraFlow</h1>
-            <p class="subtitle">Pare de Brigar Com Sua Própria Mente</p>
-            
-            <div class="offer-box">
-                <h3>🎁 Oferta por Tempo Limitado</h3>
-                <button class="btn">👉 QUERO SER PRODUTIVO - R$ 47</button>
-                <p class="timer">⏰ Termina em: <span id="countdown">03:00:00</span></p>
-            </div>
+            <h1>🚀 Pare de Brigar Com Sua Própria Mente</h1>
+            <p>Descubra o Método Científico Que Vai Transformar Sua Produtividade em Apenas 7 Dias</p>
+            <div class="timer">⏰ Oferta termina em: <span id="countdown">03:00:00</span></div>
+        </div>
+    </section>
 
-            <div class="benefits">
-                <p>✅ Método Científico Comprovado</p>
-                <p>✅ Resultados em Apenas 7 Dias</p>
-                <p>✅ Acesso Imediato e Vitalício</p>
+    <!-- Problema Section -->
+    <section class="problem">
+        <h2>Você Se Identifica Com Alguma Dessas Situações?</h2>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="emoji">😫</div>
+                <h3>Falta de Foco Constante</h3>
+                <p>Começa a trabalhar e minutos depois já está nas redes sociais. No final do dia, sente que trabalhou muito mas produziu pouco.</p>
             </div>
-
-            <div class="guarantee">
-                <p>🛡️ <strong>Garantia de 7 Dias</strong></p>
-                <p>Se não amar, devolvemos 100% do seu investimento!</p>
+            <div class="problem-card">
+                <div class="emoji">😤</div>
+                <h3>Estresse e Esgotamento</h3>
+                <p>Trabalha cada vez mais horas, mas a produtividade não aumenta. Sente-se constantemente cansado e sobrecarregado.</p>
+            </div>
+            <div class="problem-card">
+                <div class="emoji">😔</div>
+                <h3>Procrastinação Sem Fim</h3>
+                <p>Sabe o que precisa fazer, mas sempre encontra uma desculpa para deixar para depois. Os prazos se acumulam.</p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Solução Section -->
+    <section class="solution">
+        <h2>Conheça o Método AuraFlow</h2>
+        <div class="solution-content">
+            <p>O <strong>AuraFlow</strong> não é mais um método de produtividade. É um sistema científico que combina neurociência, psicologia e tecnologia para criar um fluxo de trabalho natural e sustentável.</p>
+            <br>
+            <p>Enquanto outros métodos focam em <strong>quantidade</strong> de horas trabalhadas, nós focamos na <strong>qualidade</strong> do seu foco. Trabalhe menos, produza mais.</p>
+        </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section class="benefits">
+        <h2>O Que Você Vai Conquistar</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="icon">🎯</div>
+                <h3>Foco Laser</h3>
+                <p>Elimine distrações e mantenha concentração profunda</p>
+            </div>
+            <div class="benefit-card">
+                <div class="icon">⏱️</div>
+                <h3>+3 Horas Livres</h3>
+                <p>Reduza seu tempo de trabalho mantendo a produtividade</p>
+            </div>
+            <div class="benefit-card">
+                <div class="icon">😌</div>
+                <h3>Estresse Zero</h3>
+                <p>Técnicas comprovadas para reduzir ansiedade</p>
+            </div>
+            <div class="benefit-card">
+                <div class="icon">🚀</div>
+                <h3>Resultados Rápidos</h3>
+                <p>Veja melhorias significativas na primeira semana</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oferta Section -->
+    <section class="offer">
+        <div class="offer-box">
+            <h2>🎁 Oferta por Tempo Limitado</h2>
+            <p>Adquira agora e receba 3 bônus exclusivos</p>
+            
+            <div class="price">R$ 47</div>
+            <p>ou 12x de R$ 4,70</p>
+            
+            <button class="btn">👉 QUERO TRANSFORMAR MINHA PRODUTIVIDADE!</button>
+            
+            <div class="timer">⏰ Esta oferta termina em: <span id="countdown2">03:00:00</span></div>
+        </div>
+    </section>
+
+    <!-- Garantia Section -->
+    <section class="guarantee">
+        <div class="guarantee-box">
+            <h2>🛡️ Garantia Incondicional de 7 Dias</h2>
+            <p>Se em 7 dias você não estiver completamente satisfeito, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2>Perguntas Frequentes</h2>
+        <div class="faq-item">
+            <div class="faq-question">Como recebo o acesso ao conteúdo?</div>
+            <p>O acesso é imediato! Após a confirmação do pagamento, você recebe o ebook por email em até 5 minutos.</p>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Por quanto tempo tenho acesso?</div>
+            <p>O acesso é vitalício! Você pode baixar o material e acessar quando quiser.</p>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">O método funciona para qualquer pessoa?</div>
+            <p>Sim! O método foi testado com estudantes, profissionais, empreendedores e todos tiveram resultados significativos.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 AuraFlow - Produtividade Consciente. Todos os direitos reservados.</p>
+        <p>contato@auraflow.com | (11) 99999-9999</p>
+    </footer>
 
     <script>
-        // Countdown Timer Simples
+        // Countdown Timer
         function startCountdown() {
             let time = 3 * 60 * 60; // 3 horas
             
@@ -148,8 +344,10 @@
                 const minutes = Math.floor((time % 3600) / 60);
                 const seconds = time % 60;
                 
-                document.getElementById('countdown').textContent = 
-                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                document.getElementById('countdown').textContent = timeString;
+                document.getElementById('countdown2').textContent = timeString;
                 
                 if (time > 0) time--;
             }
@@ -161,4 +359,4 @@
         document.addEventListener('DOMContentLoaded', startCountdown);
     </script>
 </body>
-</html>
+    </html>
