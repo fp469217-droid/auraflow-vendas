@@ -23,6 +23,15 @@
             color: white;
             padding: 80px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .hero h1 {
@@ -35,7 +44,22 @@
             opacity: 0.9;
             margin-bottom: 30px;
         }
+
+        /* Imagem Hero */
+        .hero-image {
+            max-width: 400px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
         
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Problema Section */
         .problem {
             padding: 80px 20px;
@@ -62,13 +86,33 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
         }
         
         .problem-card .emoji {
             font-size: 3rem;
             margin-bottom: 20px;
         }
+
+        /* Imagem Problema */
+        .problem-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
         
+        .problem-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Solução Section */
         .solution {
             padding: 80px 20px;
@@ -86,17 +130,79 @@
             margin: 0 auto;
             text-align: center;
         }
+
+        /* Imagem Solução */
+        .solution-image {
+            width: 100%;
+            max-width: 500px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
         
-        /* Benefícios Section */
-        .benefits {
+        .solution-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Depoimentos */
+        .testimonials {
             padding: 80px 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
         
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background: #ff6b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Benefícios Section */
+        .benefits {
+            padding: 80px 20px;
+            background: white;
+        }
+        
         .benefits h2 {
             text-align: center;
             margin-bottom: 50px;
+            color: #333;
         }
         
         .benefits-grid {
@@ -108,22 +214,44 @@
         }
         
         .benefit-card {
-            background: rgba(255,255,255,0.1);
+            background: white;
             padding: 30px;
             border-radius: 15px;
             text-align: center;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
         }
         
         .benefit-card .icon {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
+
+        /* Imagem Benefícios */
+        .benefits-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
         
+        .benefits-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Oferta Section */
         .offer {
             padding: 80px 20px;
-            background: white;
+            background: #f8f9fa;
         }
         
         .offer-box {
@@ -135,6 +263,19 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 20px 40px rgba(255,107,107,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #4ecdc4;
+            color: white;
+            padding: 10px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
         }
         
         .price {
@@ -161,27 +302,32 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        
+
         /* Garantia Section */
         .guarantee {
             padding: 60px 20px;
-            background: #f8f9fa;
+            background: white;
             text-align: center;
         }
         
         .guarantee-box {
             max-width: 600px;
             margin: 0 auto;
-            background: white;
+            background: #f8f9fa;
             padding: 40px;
             border-radius: 15px;
             border-left: 5px solid #4ecdc4;
         }
-        
+
+        .guarantee-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
         /* FAQ Section */
         .faq {
             padding: 80px 20px;
-            background: white;
+            background: #f8f9fa;
         }
         
         .faq h2 {
@@ -192,17 +338,19 @@
         .faq-item {
             max-width: 800px;
             margin: 0 auto 20px;
-            background: #f8f9fa;
+            background: white;
             padding: 25px;
             border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
         .faq-question {
             font-weight: bold;
             margin-bottom: 10px;
             color: #333;
+            font-size: 1.1rem;
         }
-        
+
         /* Footer */
         footer {
             background: #333;
@@ -216,16 +364,43 @@
             font-size: 1.2rem;
             font-weight: bold;
             margin: 15px 0;
+            background: rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
+        <div class="hero-content">
             <h1>🚀 Pare de Brigar Com Sua Própria Mente</h1>
             <p>Descubra o Método Científico Que Vai Transformar Sua Produtividade em Apenas 7 Dias</p>
             <div class="timer">⏰ Oferta termina em: <span id="countdown">03:00:00</span></div>
+            
+            <div class="hero-image">
+                <!-- Imagem placeholder - você pode substituir -->
+                <div style="background: #4ecdc4; color: white; padding: 100px 20px; text-align: center;">
+                    🎯 IMAGEM DO PRODUTO<br>
+                    (Ebook AuraFlow)
+                </div>
+            </div>
         </div>
     </section>
 
@@ -249,6 +424,14 @@
                 <p>Sabe o que precisa fazer, mas sempre encontra uma desculpa para deixar para depois. Os prazos se acumulam.</p>
             </div>
         </div>
+
+        <div class="problem-image">
+            <!-- Imagem placeholder -->
+            <div style="background: #667eea; color: white; padding: 80px 20px; text-align: center;">
+                📊 GRÁFICO MOSTRANDO<br>
+                Aumento de 247% na Produtividade
+            </div>
+        </div>
     </section>
 
     <!-- Solução Section -->
@@ -258,6 +441,51 @@
             <p>O <strong>AuraFlow</strong> não é mais um método de produtividade. É um sistema científico que combina neurociência, psicologia e tecnologia para criar um fluxo de trabalho natural e sustentável.</p>
             <br>
             <p>Enquanto outros métodos focam em <strong>quantidade</strong> de horas trabalhadas, nós focamos na <strong>qualidade</strong> do seu foco. Trabalhe menos, produza mais.</p>
+            
+            <div class="solution-image">
+                <!-- Imagem placeholder -->
+                <div style="background: #ff6b6b; color: white; padding: 80px 20px; text-align: center;">
+                    🧠 DIAGRAMA DO MÉTODO<br>
+                    3 Passos Simples
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section class="testimonials">
+        <h2>O Que Nossos Alunos Dizem</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"O AuraFlow mudou completamente minha relação com o trabalho. Em 2 semanas já tinha reduzido 15 horas semanais!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div>
+                        <strong>Maria Silva</strong><br>
+                        Empreendedora
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Finalmente consegui organizar meu tempo. O método é simples mas extremamente eficaz. Super recomendo!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">J</div>
+                    <div>
+                        <strong>João Santos</strong><br>
+                        Freelancer
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Depois de anos tentando métodos complexos, encontrei no AuraFlow a simplicidade que precisava. Resultados incríveis!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">A</div>
+                    <div>
+                        <strong>Ana Costa</strong><br>
+                        Estudante
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -286,11 +514,20 @@
                 <p>Veja melhorias significativas na primeira semana</p>
             </div>
         </div>
+
+        <div class="benefits-image">
+            <!-- Imagem placeholder -->
+            <div style="background: #4ecdc4; color: white; padding: 80px 20px; text-align: center;">
+                📈 RESULTADOS REAIS<br>
+                +89% de Eficiência Comprovada
+            </div>
+        </div>
     </section>
 
     <!-- Oferta Section -->
     <section class="offer">
         <div class="offer-box">
+            <div class="offer-badge">POPULAR</div>
             <h2>🎁 Oferta por Tempo Limitado</h2>
             <p>Adquira agora e receba 3 bônus exclusivos</p>
             
@@ -306,7 +543,8 @@
     <!-- Garantia Section -->
     <section class="guarantee">
         <div class="guarantee-box">
-            <h2>🛡️ Garantia Incondicional de 7 Dias</h2>
+            <div class="guarantee-icon">🛡️</div>
+            <h2>Garantia Incondicional de 7 Dias</h2>
             <p>Se em 7 dias você não estiver completamente satisfeito, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
         </div>
     </section>
